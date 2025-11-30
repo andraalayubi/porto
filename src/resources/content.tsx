@@ -2,49 +2,40 @@ import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/
 import { Line, Logo, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  firstName: "Andra",
+  lastName: "Al Ayubi",
+  name: `Andra Al Ayubi`,
+  role: "Backend Developer & Computer Engineering Student",
+  avatar: "/images/og/avatar.jpg",
+  email: "andraalayubi@gmail.com",
+  location: "Asia/Jakarta",
+  languages: ["English", "Bahasa Indonesia"],
 };
 
 const newsletter: Newsletter = {
   display: true,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
-  description: <>My weekly newsletter about creativity and engineering</>,
+  title: <>Send me a message</>,
+  description: <>Interested in collaborating or have questions? Feel free to reach out!</>,
 };
 
 const social: Social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
-  // Set essentials: true for links you want to show on the about page
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system",
+    link: "https://github.com/andraalayubi",
     essential: true,
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/andra-al-ayubi/",
     essential: true,
   },
   {
     name: "Instagram",
     icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
+    link: "https://www.instagram.com/andra.al.ayubi/",
     essential: false,
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
-    essential: true,
   },
   {
     name: "Email",
@@ -60,30 +51,25 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Building scalable backend systems and RESTful APIs</>,
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
+        <strong className="ml-4">Andra Al Ayubi</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
           Featured work
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/work/toefl-video-exercise-application",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at{" "}
-      <Logo
-        dark
-        icon="/trademarks/wordmark-dark.svg"
-        style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}
-      />
-      , where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I'm Andra Al Ayubi, a Computer Engineering student at{" "}
+      <strong>Electronic Engineering Polytechnic Institute of Surabaya</strong> 
+      with a passion for backend development, RESTful APIs, and database management.
     </>
   ),
 };
@@ -101,119 +87,73 @@ const about: About = {
     display: true,
   },
   calendar: {
-    display: true,
-    link: "https://cal.com",
+    display: false,
+    link: "",
   },
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Andra Al Ayubi is a Computer Engineering student at PENS Surabaya with a strong focus 
+        on backend development. With a GPA of 3.68/4.00, he specializes in building RESTful APIs 
+        using Express.js, Next.js, and Laravel, with expertise in various databases including 
+        MySQL, PostgreSQL, Prisma, and Supabase.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "PT. Travelana Mandiri Sejahtera",
+        timeframe: "Jan 2025 - Present",
+        role: "Backend Developer",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Developing applications for quick count in the electoral process and features for 
+            booking transportation tickets.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Building scalable backend systems to handle real-time data processing and 
+            transaction management.
           </>,
-        ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
-        achievements: [
-          <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
-          </>,
-          <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
-          </>,
-        ],
-        images: [],
+        ]
       },
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
-    title: "Studies",
+    display: true,
+    title: "Education",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Electronic Engineering Polytechnic Institute of Surabaya (PENS)",
+        description: (
+          <>
+            Diploma in Computer Engineering (D4) - Cumulative GPA: 3.68/4.00<br />
+            Focus on software engineering, database systems, and web development
+          </>
+        ),
       },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
-    title: "Technical skills",
+    display: true,
+    title: "Technical Skills",
     skills: [
       {
-        title: "Figma",
+        title: "Backend Development",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+          <>
+            Building RESTful APIs with Express.js, Next.js, and Laravel. 
+            Experienced in creating scalable server architectures and handling 
+            database operations.
+          </>
         ),
         tags: [
           {
-            name: "Figma",
-            icon: "figma",
-          },
-        ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
-      },
-      {
-        title: "Next.js",
-        description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
-        ),
-        tags: [
-          {
-            name: "JavaScript",
+            name: "Express.js",
             icon: "javascript",
           },
           {
@@ -221,20 +161,97 @@ const about: About = {
             icon: "nextjs",
           },
           {
+            name: "Laravel",
+            icon: "php",
+          },
+          {
+            name: "Node.js",
+            icon: "nodejs",
+          },
+        ]
+      },
+      {
+        title: "Database Management",
+        description: (
+          <>
+            Expertise in relational databases MySQL and PostgreSQL, along with 
+            modern database services like Prisma and Supabase for efficient 
+            data management.
+          </>
+        ),
+        tags: [
+          {
+            name: "MySQL",
+            icon: "database",
+          },
+          {
+            name: "PostgreSQL",
+            icon: "database",
+          },
+          {
+            name: "Prisma",
+            icon: "database",
+          },
+          {
             name: "Supabase",
             icon: "supabase",
           },
-        ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
+        ]
+      },
+      {
+        title: "Mobile & Frontend",
+        description: (
+          <>
+            Developing mobile applications with Flutter and web interfaces with 
+            React.js. Experience in full-stack development and cross-platform solutions.
+          </>
+        ),
+        tags: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
+            name: "Flutter",
+            icon: "mobile",
           },
-        ],
-      },  
+          {
+            name: "React.js",
+            icon: "react",
+          },
+          {
+            name: "JavaScript",
+            icon: "javascript",
+          },
+          {
+            name: "Dart",
+            icon: "mobile",
+          },
+        ]
+      },
+      {
+        title: "Deployment & Tools",
+        description: (
+          <>
+            Deploying applications to Vercel and managing hosting with Niagahoster. 
+            Experienced with Git version control and Agile development methodologies.
+          </>
+        ),
+        tags: [
+          {
+            name: "Vercel",
+            icon: "deploy",
+          },
+          {
+            name: "Git",
+            icon: "git",
+          },
+          {
+            name: "RESTful API",
+            icon: "api",
+          },
+          {
+            name: "Agile",
+            icon: "agile",
+          },
+        ]
+      },
     ],
   },
 };
@@ -242,67 +259,41 @@ const about: About = {
 const blog: Blog = {
   path: "/blog",
   label: "Blog",
-  title: "Writing about design and tech...",
-  description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
+  title: "Writing about backend development and technology...",
+  description: `Read about ${person.name}'s journey in backend development and computer engineering`,
 };
 
 const work: Work = {
   path: "/work",
-  label: "Work",
+  label: "Projects",
   title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
+  description: `Backend and full-stack projects by ${person.name}`,
 };
 
 const gallery: Gallery = {
   path: "/gallery",
   label: "Gallery",
-  title: `Photo gallery – ${person.name}`,
-  description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
+  title: `Project gallery – ${person.name}`,
+  description: `A collection of project screenshots by ${person.name}`,
   images: [
     {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
+      src: "/images/projects/toefl-app/cover-01.jpg",
+      alt: "TOEFL Application Project",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
+      src: "/images/projects/internship-system/cover-01.jpg",
+      alt: "Internship Management System",
       orientation: "vertical",
     },
     {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
+      src: "/images/projects/anime-list/cover-01.jpg",
+      alt: "Anime List Application",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
+      src: "",
+      alt: "Travelana Backend Development",
       orientation: "vertical",
     },
   ],

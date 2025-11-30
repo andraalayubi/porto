@@ -1,17 +1,14 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-
-import { Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
-
+import { Fade, Row, Line, ToggleButton } from "@once-ui-system/core";
 import { routes, display, person, about, blog, work, gallery } from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Header.module.scss";
 
 type TimeDisplayProps = {
   timeZone: string;
-  locale?: string; // Optionally allow locale, defaulting to 'en-GB'
+  locale?: string;
 };
 
 const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = "en-GB" }) => {
@@ -48,8 +45,20 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = "en-GB" })
 
 export default TimeDisplay;
 
-export const Header = () => {
-  const pathname = usePathname() ?? "";
+export const ClientHeader = () => {
+  const [mounted, setMounted] = useState(false);
+  const [pathname, setPathname] = useState("");
+
+  useEffect(() => {
+    setMounted(true);
+    setPathname(window.location.pathname);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div style={{ height: "80px", position: "fixed", top: 0, width: "100%", zIndex: 9 }} />
+    );
+  }
 
   return (
     <>
@@ -181,19 +190,19 @@ export const Header = () => {
             </Row>
           </Row>
         </Row>
-        <Flex fillWidth horizontal="end" vertical="center">
-          <Flex
+        <Row fillWidth horizontal="end" vertical="center">
+          <Row
             paddingRight="12"
             horizontal="end"
             vertical="center"
             textVariant="body-default-s"
             gap="20"
           >
-            <Flex s={{ hide: true }}>
+            <Row s={{ hide: true }}>
               {display.time && <TimeDisplay timeZone={person.location} />}
-            </Flex>
-          </Flex>
-        </Flex>
+            </Row>
+          </Row>
+        </Row>
       </Row>
     </>
   );

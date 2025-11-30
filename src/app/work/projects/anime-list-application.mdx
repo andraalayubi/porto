@@ -1,0 +1,98 @@
+---
+title: "Anime List Application"
+publishedAt: "2024-01-10"
+summary: "A mobile application for browsing and tracking anime series with data fetched from external APIs and clean, responsive UI."
+images:
+  - "/images/projects/anime-list/cover-01.png"
+team:
+  - name: "Andra Al Ayubi"
+    role: "Mobile Developer"
+    avatar: "/images/og/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/andra-al-ayubi/"
+---
+
+## Overview
+
+A Flutter-based mobile application that allows users to browse, search, and track their favorite anime series. The app fetches real-time data from external anime APIs and presents it through an intuitive and visually appealing interface.
+
+## Key Features
+
+- **Anime Discovery**: Browse popular, trending, and upcoming anime series
+- **Advanced Search**: Filter anime by genre, season, year, and status
+- **Personal Watchlist**: Save favorite anime and track watching progress
+- **Detailed Information**: Comprehensive details including synopsis, episodes, ratings, and characters
+- **Responsive Design**: Optimized UI for various screen sizes and orientations
+
+## Technical Implementation
+
+### Mobile Application
+- **Framework**: Flutter with Dart programming language
+- **State Management**: Provider pattern for efficient state handling
+- **API Integration**: RESTful consumption of external anime APIs
+- **Caching Strategy**: Local storage for offline access to previously viewed content
+- **Image Loading**: Optimized image caching and loading with placeholder support
+
+### API Integration
+- **Data Fetching**: HTTP requests with error handling and retry mechanisms
+- **Response Parsing**: Efficient JSON parsing and data model creation
+- **Rate Limiting**: Proper handling of API rate limits and quotas
+- **Error Management**: Graceful handling of network errors and empty states
+
+### User Interface
+- **Custom Widgets**: Reusable UI components for consistent design
+- **Smooth Animations**: Engaging transitions and micro-interactions
+- **Dark/Light Theme**: Support for multiple theme preferences
+- **Responsive Layout**: Adaptive design for phones and tablets
+
+## Architecture Design
+
+### Data Layer
+- **Repository Pattern**: Separation of data sources and business logic
+- **Model Classes**: Strongly typed data models for type safety
+- **Local Storage**: Hive for efficient local data persistence
+- **Network Management**: Dio client for advanced HTTP features
+
+### Presentation Layer
+- **Business Logic Components**: Organized feature-based architecture
+- **State Management**: Centralized state handling with Provider
+- **Route Management**: Clean navigation stack with named routes
+- **Dependency Injection**: Proper dependency management setup
+
+## Performance Optimization
+
+- **Lazy Loading**: Infinite scroll for large anime lists
+- **Image Optimization**: Cached network images with compression
+- **Memory Management**: Efficient widget disposal and resource cleanup
+- **Build Optimization**: Constrained rebuilds for better performance
+
+## Challenges & Solutions
+
+**Challenge**: Handling large datasets from API responses
+**Solution**: Implemented pagination and lazy loading for smooth scrolling
+
+**Challenge**: Maintaining UI responsiveness during data fetching
+**Solution**: Used asynchronous programming with proper loading states
+
+**Challenge**: Cross-platform consistency
+**Solution**: Leveraged Flutter's single codebase for iOS and Android
+
+**Challenge**: API rate limiting
+**Solution**: Implemented smart caching and request queuing
+
+## Technologies Used
+
+- **Mobile Framework**: Flutter, Dart
+- **State Management**: Provider
+- **HTTP Client**: Dio, Http
+- **Local Storage**: Hive, Shared Preferences
+- **Development Tools**: Android Studio, Flutter SDK
+- **API**: External anime REST API
+
+## Outcome
+
+Successfully created a feature-rich anime application that:
+- Provides seamless anime browsing experience
+- Handles large datasets efficiently
+- Maintains excellent performance across devices
+- Demonstrates clean Flutter architecture patterns
+- Serves as a foundation for more complex mobile applications

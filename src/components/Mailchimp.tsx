@@ -1,6 +1,6 @@
 "use client";
 
-import { mailchimp, newsletter } from "@/resources";
+import { newsletter } from "@/resources";
 import { Button, Heading, Input, Text, Background, Column, Row } from "@once-ui-system/core";
 import { opacity, SpacingToken } from "@once-ui-system/core";
 import { useState } from "react";
@@ -15,8 +15,11 @@ function debounce<T extends (...args: any[]) => void>(func: T, delay: number): T
 
 export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...flex }) => {
   const [email, setEmail] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [touched, setTouched] = useState<boolean>(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
   const validateEmail = (email: string): boolean => {
     if (email === "") {
@@ -38,12 +41,56 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
     }
   };
 
+  const handleMessageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMessage(e.target.value);
+  };
+
   const debouncedHandleChange = debounce(handleChange, 2000);
 
   const handleBlur = () => {
     setTouched(true);
     if (!validateEmail(email)) {
       setError("Please enter a valid email address.");
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateEmail(email) || !message.trim()) {
+      setError("Please fill in all fields correctly.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    setError("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          message,
+          to: "andraalayubi@gmail.com",
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        setEmail("");
+        setMessage("");
+      } else {
+        setSubmitStatus("error");
+        setError("Failed to send message. Please try again.");
+      }
+    } catch (err) {
+      setSubmitStatus("error");
+      setError("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -66,42 +113,42 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
         top="0"
         position="absolute"
         mask={{
-          x: mailchimp.effects.mask.x,
-          y: mailchimp.effects.mask.y,
-          radius: mailchimp.effects.mask.radius,
-          cursor: mailchimp.effects.mask.cursor,
+          x: 50,
+          y: 0,
+          radius: 100,
+          cursor: true,
         }}
         gradient={{
-          display: mailchimp.effects.gradient.display,
-          opacity: mailchimp.effects.gradient.opacity as opacity,
-          x: mailchimp.effects.gradient.x,
-          y: mailchimp.effects.gradient.y,
-          width: mailchimp.effects.gradient.width,
-          height: mailchimp.effects.gradient.height,
-          tilt: mailchimp.effects.gradient.tilt,
-          colorStart: mailchimp.effects.gradient.colorStart,
-          colorEnd: mailchimp.effects.gradient.colorEnd,
+          display: true,
+          opacity: 90 as opacity,
+          x: 50,
+          y: 0,
+          width: 50,
+          height: 50,
+          tilt: 0,
+          colorStart: "accent-background-strong",
+          colorEnd: "static-transparent",
         }}
         dots={{
-          display: mailchimp.effects.dots.display,
-          opacity: mailchimp.effects.dots.opacity as opacity,
-          size: mailchimp.effects.dots.size as SpacingToken,
-          color: mailchimp.effects.dots.color,
+          display: true,
+          opacity: 20 as opacity,
+          size: "2" as SpacingToken,
+          color: "brand-on-background-weak",
         }}
         grid={{
-          display: mailchimp.effects.grid.display,
-          opacity: mailchimp.effects.grid.opacity as opacity,
-          color: mailchimp.effects.grid.color,
-          width: mailchimp.effects.grid.width,
-          height: mailchimp.effects.grid.height,
+          display: false,
+          opacity: 100 as opacity,
+          color: "neutral-alpha-medium",
+          width: "0.25rem",
+          height: "0.25rem",
         }}
         lines={{
-          display: mailchimp.effects.lines.display,
-          opacity: mailchimp.effects.lines.opacity as opacity,
-          size: mailchimp.effects.lines.size as SpacingToken,
-          thickness: mailchimp.effects.lines.thickness,
-          angle: mailchimp.effects.lines.angle,
-          color: mailchimp.effects.lines.color,
+          display: false,
+          opacity: 100 as opacity,
+          size: "16" as SpacingToken,
+          thickness: 1,
+          angle: 90,
+          color: "neutral-alpha-medium",
         }}
       />
       <Column maxWidth="xs" horizontal="center">
@@ -118,13 +165,9 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
           display: "flex",
           justifyContent: "center",
         }}
-        action={mailchimp.action}
-        method="post"
-        id="mc-embedded-subscribe-form"
-        name="mc-embedded-subscribe-form"
+        onSubmit={handleSubmit}
       >
         <Row
-          id="mc_embed_signup_scroll"
           fillWidth
           maxWidth={24}
           s={{ direction: "column" }}
@@ -132,11 +175,12 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
         >
           <Input
             formNoValidate
-            id="mce-EMAIL"
-            name="EMAIL"
+            id="email"
+            name="email"
             type="email"
             placeholder="Email"
             required
+            value={email}
             onChange={(e) => {
               if (error) {
                 handleChange(e);
@@ -147,36 +191,35 @@ export const Mailchimp: React.FC<React.ComponentProps<typeof Column>> = ({ ...fl
             onBlur={handleBlur}
             errorMessage={error}
           />
-          <div style={{ display: "none" }}>
-            <input
-              type="checkbox"
-              readOnly
-              name="group[3492][1]"
-              id="mce-group[3492]-3492-0"
-              value=""
-              checked
-            />
-          </div>
-          <div id="mce-responses" className="clearfalse">
-            <div className="response" id="mce-error-response" style={{ display: "none" }}></div>
-            <div className="response" id="mce-success-response" style={{ display: "none" }}></div>
-          </div>
-          <div aria-hidden="true" style={{ position: "absolute", left: "-5000px" }}>
-            <input
-              type="text"
-              readOnly
-              name="b_c1a5a210340eb6c7bff33b2ba_0462d244aa"
-              tabIndex={-1}
-              value=""
-            />
-          </div>
-          <div className="clear">
-            <Row height="48" vertical="center">
-              <Button id="mc-embedded-subscribe" value="Subscribe" size="m" fillWidth>
-                Subscribe
-              </Button>
-            </Row>
-          </div>
+          <Input
+            id="message"
+            name="message"
+            type="text"
+            placeholder="Message"
+            required
+            value={message}
+            onChange={handleMessageChange}
+          />
+          <Row height="48" vertical="center">
+            <Button 
+              type="submit" 
+              size="m" 
+              fillWidth
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Sending..." : "Send Message"}
+            </Button>
+          </Row>
+          {submitStatus === "success" && (
+            <Text variant="body-default-s" onBackground="brand-strong">
+              Message sent successfully!
+            </Text>
+          )}
+          {submitStatus === "error" && (
+            <Text variant="body-default-s" onBackground="danger-strong">
+              {error}
+            </Text>
+          )}
         </Row>
       </form>
     </Column>

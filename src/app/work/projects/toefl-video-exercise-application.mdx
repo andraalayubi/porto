@@ -1,0 +1,89 @@
+---
+title: "TOEFL Video & Exercise Application"
+publishedAt: "2024-03-15"
+summary: "A comprehensive mobile application for TOEFL preparation with video lessons, exercises, and admin panel for content management."
+images:
+  - "/images/projects/toefl-app/cover-01.jpg"
+  - "/images/projects/toefl-app/cover-02.jpg"
+team:
+  - name: "Andra Al Ayubi"
+    role: "Backend & Mobile Developer"
+    avatar: "/images/og/avatar.jpg"
+    linkedIn: "https://www.linkedin.com/in/andra-al-ayubi/"
+  - name: "Team Member 2"
+    role: "Frontend Developer"
+  - name: "Team Member 3" 
+    role: "UI/UX Designer"
+  - name: "Team Member 4"
+    role: "Quality Assurance"
+  - name: "Team Member 5"
+    role: "Project Manager"
+---
+
+## Overview
+
+A full-stack mobile application designed to help users prepare for TOEFL exams through comprehensive video lessons and interactive exercises. The application features separate modules for writing, listening, reading, and speaking sections, with an admin panel for content management.
+
+## Key Features
+
+- **Mobile Learning Platform**: Flutter-based mobile app with intuitive UI for TOEFL preparation
+- **Admin Content Management**: React.js web dashboard for CRUD operations on video content and exercises
+- **RESTful API Backend**: Express.js server providing endpoints for user data, video streaming, and exercise management
+- **Real-time Progress Tracking**: Users can track their learning progress and test scores
+- **Multi-format Exercises**: Support for various question types including multiple choice, fill-in-the-blank, and speaking practice
+
+## Technical Implementation
+
+### Backend Architecture
+- **Framework**: Express.js with Node.js
+- **Database**: Supabase for data storage and management
+- **Authentication**: JWT-based user authentication
+- **API Design**: RESTful architecture with proper status codes and error handling
+- **Deployment**: Vercel for serverless deployment
+
+### Mobile Application
+- **Framework**: Flutter with Dart
+- **State Management**: Provider pattern for efficient state handling
+- **Video Streaming**: Integrated video player for lesson content
+- **Offline Capability**: Caching mechanism for previously accessed content
+
+### Admin Panel
+- **Frontend**: React.js with modern hooks
+- **UI Components**: Custom components for content management
+- **Real-time Updates**: WebSocket integration for live content updates
+
+## Development Process
+
+This project was developed using **Agile methodology** with a team of 5 members. We conducted:
+- **Sprint Planning**: Two-week sprints with clear deliverables
+- **Daily Standups**: Team coordination and progress tracking
+- **Code Reviews**: Maintaining code quality and knowledge sharing
+- **User Testing**: Iterative improvements based on user feedback
+
+## Challenges & Solutions
+
+**Challenge**: Synchronizing video content between admin panel and mobile app
+**Solution**: Implemented webhook system to notify mobile app of content updates
+
+**Challenge**: Handling large video files efficiently
+**Solution**: Used Supabase storage with CDN integration for optimized delivery
+
+**Challenge**: Cross-platform consistency
+**Solution**: Leveraged Flutter's widget system for uniform UI across iOS and Android
+
+## Technologies Used
+
+- **Mobile**: Flutter, Dart, Provider
+- **Backend**: Express.js, Node.js, JWT
+- **Database**: Supabase, PostgreSQL
+- **Frontend**: React.js, Context API
+- **Deployment**: Vercel
+- **Tools**: Git, Agile Methodology, Figma
+
+## Outcome
+
+Successfully delivered a production-ready TOEFL preparation platform that provides:
+- Comprehensive learning materials management
+- Smooth user experience across devices
+- Scalable backend architecture
+- Efficient content update workflow for administrators
