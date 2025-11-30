@@ -51,7 +51,7 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building scalable backend systems and RESTful APIs</>,
+  headline: <>Professional Backend Developer</>,
   featured: {
     display: true,
     title: (
@@ -68,7 +68,7 @@ const home: Home = {
   subline: (
     <>
       I'm Andra Al Ayubi, a Computer Engineering student at{" "}
-      <strong>Electronic Engineering Polytechnic Institute of Surabaya</strong> 
+      <strong>Electronic Engineering Polytechnic Institute of Surabaya{" "}</strong>
       with a passion for backend development, RESTful APIs, and database management.
     </>
   ),
